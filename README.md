@@ -1,5 +1,29 @@
 # craneOntology
 OWL ontology and Apache Jena reasoning rules for modelling crane operations in construction projects.
+
+
+### Ontology (ontology.owl)
+The Crane Operation Ontology is an OWL 2 schema-level ontology that models mobile crane operations and their surrounding context. It is designed to support:
+multi-modal fusion of vision, sensor and structured-text data,
+ontology-based inference of transient crane behaviours, and
+similarity-based matching between as-is executed operations and as-planned lifting orders.
+The ontology defines a expressive core:
+Classes
+Thing
+CraneTransientStatus: crane’s transient operational state derived from low-level signals.
+Operation: an executed crane operation (e.g., a specific lift).
+Order: a planned lifting order from the construction schedule.
+Object properties
+belongTo (CraneTransientStatus → Operation): links a transient status to the operation it belongs to.
+isSimilarTo (Operation ↔ Order): relates an executed operation to a planned order that is similar in terms of time, destination and load attributes; declared as a symmetric object property.
+Datatype properties
+For CraneTransientStatus: weightTransientStatus, boomTransientStatus, slewTransientStatus, hookTransientHeightStatus, craneTransientBehaviour.
+For Operation: operationDateAndTime, operationLoadColourShapeMaterialWeight, operationLoadGeometricDimension, operationDestinationXYZSpatialPosition.
+For Order: proposedDateAndTime, proposedLoadColourShapeMaterialWeight, proposedLoadGeometricDimension, proposedDestinationAreaAndHeight.
+A generic similarity attribute similarityScore (xsd:double) that can store numeric similarity values produced by Jaccard matching algorithms.
+The current version of ontology.owl intentionally contains only TBox axioms (no individuals) so that it can be reused across different projects and datasets. Instance data derived from specific sites (operations, orders and their similarity scores) can be generated and linked to this schema using separate scripts.
+This ontology has been developed in the context of research on Knowledge-augmented Multi-modal Data Fusion and Reasoning for Automated Crane Lift Monitoring, and is intended for reuse in construction informatics, semantic sensor fusion and ontology-supported reasoning.
+
 ### Jena reasoning rules
 
 This repository also includes an Apache Jena rule file  
