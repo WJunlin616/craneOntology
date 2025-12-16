@@ -1,0 +1,133 @@
+@prefix fa: <http://www.machine.edu.cn/ontology/example/#>.@include <RDFS>.@include <OWL>.
+[rule_Loaded_hold:
+    (?x fa:StartPointweightCompareWithEmptyRef       ?s) equal(?s,"beyond")
+    (?x fa:EndPointweightCompareWithEmptyRef       ?a) equal(?a,"beyond")
+
+    (?x fa:BoomAngle       ?b) equal(?b,"BoomAngleSteady")
+    (?x fa:SlewingAngle    ?c) equal(?c,"SlewingSteady")
+    (?x fa:LiftingHeight     ?h) equal(?h,"LiftingHeightSteady")
+    (?x fa:BoomLength_new ?l) equal(?l,"BoomLengthSteady")
+->
+    (?x fa:CraneStatus "Loaded_hold")
+]
+
+
+
+[rule_Idle:
+    (?x fa:StartPointweightCompareWithEmptyRef       ?s) notEqual(?s,"beyond")
+    (?x fa:EndPointweightCompareWithEmptyRef       ?a) notEqual(?a,"beyond")
+
+    (?x fa:BoomAngle       ?b) equal(?b,"BoomAngleSteady")
+    (?x fa:SlewingAngle    ?c) equal(?c,"SlewingSteady")
+    (?x fa:LiftingHeight     ?h) equal(?h,"LiftingHeightSteady")
+    (?x fa:BoomLength_new ?l) equal(?l,"BoomLengthSteady")
+->
+    (?x fa:CraneStatus "Idle")
+]
+
+
+
+[rule_Takeup_load:
+    (?x fa:StartPointweightCompareWithEmptyRef       ?s) notEqual(?s,"beyond")
+    (?x fa:EndPointweightCompareWithEmptyRef       ?a) equal(?a,"beyond")
+->
+    (?x fa:CraneStatus "Takeup_load")
+]
+
+
+
+[rule_Lower_load:
+    (?x fa:StartPointweightCompareWithEmptyRef       ?s) equal(?s,"beyond")
+    (?x fa:EndPointweightCompareWithEmptyRef       ?a) notEqual(?a,"beyond")
+->
+    (?x fa:CraneStatus "Lower_load")
+]
+
+
+
+[rule_Moving_loaded:
+    (?x fa:StartPointweightCompareWithEmptyRef       ?s) equal(?s,"beyond")
+    (?x fa:EndPointweightCompareWithEmptyRef       ?a) equal(?a,"beyond")
+
+    (?x fa:BoomAngle       ?b) notEqual(?b,"BoomAngleSteady")
+->
+    (?x fa:CraneStatus "Moving_loaded")
+]
+
+
+
+[rule_Moving_loaded:
+    (?x fa:StartPointweightCompareWithEmptyRef       ?s) equal(?s,"beyond")
+    (?x fa:EndPointweightCompareWithEmptyRef       ?a) equal(?a,"beyond")
+
+    (?x fa:SlewingAngle    ?c) notEqual(?c,"SlewingSteady")
+->
+    (?x fa:CraneStatus "Moving_loaded")
+]
+
+
+
+[rule_Moving_loaded:
+    (?x fa:StartPointweightCompareWithEmptyRef       ?s) equal(?s,"beyond")
+    (?x fa:EndPointweightCompareWithEmptyRef       ?a) equal(?a,"beyond")
+
+    (?x fa:LiftingHeight     ?h) notEqual(?h,"LiftingHeightSteady")
+->
+    (?x fa:CraneStatus "Moving_loaded")
+]
+
+
+
+[rule_Moving_loaded:
+    (?x fa:StartPointweightCompareWithEmptyRef       ?s) equal(?s,"beyond")
+    (?x fa:EndPointweightCompareWithEmptyRef       ?a) equal(?a,"beyond")
+
+    (?x fa:BoomLength_new ?l) notEqual(?l,"BoomLengthSteady")
+->
+    (?x fa:CraneStatus "Moving_loaded")
+]
+
+
+
+
+[rule_Moving_unloaded:
+    (?x fa:StartPointweightCompareWithEmptyRef       ?s) notEqual(?s,"beyond")
+    (?x fa:EndPointweightCompareWithEmptyRef       ?a) notEqual(?a,"beyond")
+
+    (?x fa:BoomAngle       ?b) notEqual(?b,"BoomAngleSteady")
+->
+    (?x fa:CraneStatus "Moving_unloaded")
+]
+
+
+
+[rule_Moving_unloaded:
+    (?x fa:StartPointweightCompareWithEmptyRef       ?s) notEqual(?s,"beyond")
+    (?x fa:EndPointweightCompareWithEmptyRef       ?a) notEqual(?a,"beyond")
+
+    (?x fa:SlewingAngle    ?c) notEqual(?c,"SlewingSteady")
+->
+    (?x fa:CraneStatus "Moving_unloaded")
+]
+
+
+
+[rule_Moving_unloaded:
+    (?x fa:StartPointweightCompareWithEmptyRef       ?s) notEqual(?s,"beyond")
+    (?x fa:EndPointweightCompareWithEmptyRef       ?a) notEqual(?a,"beyond")
+
+    (?x fa:LiftingHeight     ?h) notEqual(?h,"LiftingHeightSteady")
+->
+    (?x fa:CraneStatus "Moving_unloaded")
+]
+
+
+
+[rule_Moving_unloaded:
+    (?x fa:StartPointweightCompareWithEmptyRef       ?s) notEqual(?s,"beyond")
+    (?x fa:EndPointweightCompareWithEmptyRef       ?a) notEqual(?a,"beyond")
+
+    (?x fa:BoomLength_new ?l) notEqualequal(?l,"BoomLengthSteady")
+->
+    (?x fa:CraneStatus "Moving_unloaded")
+]

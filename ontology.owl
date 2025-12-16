@@ -1,0 +1,160 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:ex="https://wjunlin/ontology#">
+  <owl:Ontology rdf:about="#">
+    <rdfs:comment xml:lang="en">Ontology for crane transient status, crane operations and orders, designed for multi-modal monitoring and matching of as-is operations and as-planned orders.</rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Order">
+    <rdfs:label xml:lang="en">Order</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="CraneTransientStatus">
+    <rdfs:label xml:lang="en">craneTransientStatus</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Operation">
+    <rdfs:label xml:lang="en">Operation</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="belongTo">
+    <rdfs:comment xml:lang="en">Links a transient crane status snapshot to the operation it belongs to.</rdfs:comment>
+    <rdfs:range rdf:resource="#Operation"/>
+    <rdfs:domain rdf:resource="#CraneTransientStatus"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="operationLoadGeometricDimensionWidth">
+    <rdfs:comment xml:lang="en">Geometric dimensions of the actual load used in the operation.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Operation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="proposedDestinationHeight">
+    <rdfs:comment xml:lang="en">Planned destination height for the load in the order.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Order"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="proposedDateAndTimeStart">
+    <rdfs:comment xml:lang="en">Planned execution date and time of the order.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="#Order"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="operationDateAndTimeStart">
+    <rdfs:comment xml:lang="en">Timestamp of the executed crane operation.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="#Operation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="operationLoadGeometricDimensionLength">
+    <rdfs:comment xml:lang="en">Geometric dimensions of the actual load used in the operation.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Operation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="similarityScore">
+    <rdfs:label xml:lang="en">Similarity score between an operation and its matched order (0.0–1.0).</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="#Operation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="proposedLoadShape">
+    <rdfs:comment xml:lang="en">Planned load description for the order (shape).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Order"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="proposedLoadGeometricDimension">
+    <rdfs:comment xml:lang="en">Planned geometric dimensions of the load in the order.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Order"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hookTransientHeightStatus">
+    <rdfs:comment xml:lang="en">Transient height status of the hook (e.g. hold, increasing, decreasing).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#CraneTransientStatus"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="proposedLoadWeight">
+    <rdfs:comment xml:lang="en">Planned load description for the order (weight).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Order"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="proposedDateAndTimeEnd">
+    <rdfs:comment xml:lang="en">Planned execution date and time of the order.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="#Order"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="operationLoadWeight">
+    <rdfs:comment xml:lang="en">physical description of the actual load (weight).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Operation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="proposedDestinationArea">
+    <rdfs:comment xml:lang="en">Planned destination area for the load in the order.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Order"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="operationLoadShape">
+    <rdfs:comment xml:lang="en">Appearance of the actual load (shape).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Operation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="operationDestinationXSpatialPosition">
+    <rdfs:comment xml:lang="en">Destination of the operation expressed as X spatial coordinates or location identifier.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Operation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="boomTransientStatus">
+    <rdfs:comment xml:lang="en">Transient status of the crane boom (e.g. hold, increasing, decreasing).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#CraneTransientStatus"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="proposedLoadColour">
+    <rdfs:comment xml:lang="en">Planned load description for the order (colour).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Order"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="operationLoadeMaterial">
+    <rdfs:comment xml:lang="en">Appearance of the actual load (material).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Operation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="operationLoadColour">
+    <rdfs:comment xml:lang="en">Appearance of the actual load (colour).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Operation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="craneTransientBehaviour">
+    <rdfs:comment xml:lang="en">Eight Transient behaviour inferred from multiple transient status attributes (e.g. idle, moving loaded, moving unloaded...).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#CraneTransientStatus"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="proposedLoadMaterial">
+    <rdfs:comment xml:lang="en">Planned load description for the order (material).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Order"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="weightTransientStatus">
+    <rdfs:comment xml:lang="en">Weight transient status of the lifted load (e.g. constant, increasing, decreasing).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#CraneTransientStatus"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="operationDateAndTimeEnd">
+    <rdfs:comment xml:lang="en">Timestamp of the executed crane operation.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="#Operation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="operationDestinationZcoordinates">
+    <rdfs:comment xml:lang="en">Destination of the operation expressed as Z spatial coordinates or location identifier.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Operation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="operationDestinationYcoordinates">
+    <rdfs:comment xml:lang="en">Destination of the operation expressed as Y spatial coordinates or location identifier.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Operation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="slewTransientStatus">
+    <rdfs:comment xml:lang="en">Transient status of crane slewing motion.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#CraneTransientStatus"/>
+  </owl:DatatypeProperty>
+  <owl:SymmetricProperty rdf:ID="isSimilarTo">
+    <rdfs:comment xml:lang="en">Relates an executed operation to a planned order that is similar to it.</rdfs:comment>
+    <rdfs:range rdf:resource="#Order"/>
+    <rdfs:domain rdf:resource="#Operation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:SymmetricProperty>
+</rdf:RDF>
