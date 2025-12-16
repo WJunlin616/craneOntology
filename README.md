@@ -7,8 +7,8 @@ OWL ontology and Apache Jena reasoning rules for modelling crane operations in c
 The **Crane Operation Ontology** is an OWL 2 schema-level ontology that models **mobile crane operations** and their surrounding context. It is designed to support:
 
 - multi-modal fusion of **vision, sensor and structured-text** data  
-- ontology-based inference of **transient crane behaviours**  
-- similarity-based matching between **as-is executed operations** and **as-planned lifting orders**
+- inference of **transient crane behaviours**  
+- matching between **as-is executed operations** and **as-planned lifting orders**
 
 ---
 
