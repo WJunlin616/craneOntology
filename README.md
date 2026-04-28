@@ -1,6 +1,7 @@
 # Citation
 
 Wang, J., Hu, S., Fang, Y., & Guo, H. (2026). Knowledge-augmented multi-modal data fusion and reasoning for automated crane lift monitoring. *Automation in Construction*, 183, 106822.
+
 https://doi.org/10.1016/j.autcon.2026.106822
 
 # craneOntology
